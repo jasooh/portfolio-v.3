@@ -18,7 +18,7 @@ export default function Home() {
           <section className="w-[60%] pl-28 flex flex-col justify-center min-h-screen border-green-400 border">
             <section className="w-fit mb-2 border">
               <p>Hey! I&#39;m</p>
-              <h1 className="text-6xl">Justin Abuyuan</h1>
+              <h1 className="text-6xl">Justin Abuyuan.</h1>
             </section>
 
             {/* Current position */}
@@ -35,6 +35,7 @@ export default function Home() {
             {/* Social links */}
             <section className="flex flex-row gap-3 w-fit mt-8 border">
               {/* TODO: Turn these into buttons and add a cool parallax animation when moving mouse inside the container */}
+              {/* TODO: Find better icons */}
               <FaLinkedin className="size-8" />
               <FaGithub className="size-8" />
               <IoDocumentTextOutline className="size-8" />
@@ -44,7 +45,7 @@ export default function Home() {
           {/* Hero animation */}
           {/* TODO: Node animation here */}
           <section className="pl-20 flex-grow flex flex-col justify-center border border-yellow-500">
-            <section className="w-fit text-xl border">
+            <section className="w-fit text-xl border uppercase">
               <p>Projects</p>
               <p>Experience</p>
               <p>Contact</p>
