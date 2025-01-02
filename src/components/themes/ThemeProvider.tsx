@@ -17,13 +17,16 @@ export default function Providers({ children }: ProvidersProps) {
 
   if (!mounted) {
     return <>{children}</>
+  } else {
+    return <Theme
+      attribute="class"
+      defaultTheme="dark"
+      enableSystem
+      disableTransitionOnChange
+    >
+      {children}
+    </Theme>
   }
-  return <Theme
-    attribute="class"
-    defaultTheme="system"
-    enableSystem
-    disableTransitionOnChange
-  >
-    {children}
-  </Theme>
+
+
 }

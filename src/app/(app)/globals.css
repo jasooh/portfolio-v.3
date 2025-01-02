@@ -5,7 +5,7 @@
 /* Themes */
 
 /* Light */
-:root  {
+.light  {
     --background: 260 100% 95%;
     --foreground: 260 5% 0%;
     --card: 260 50% 90%;
@@ -29,7 +29,7 @@
 }
 
 /* Dark */
-.dark  {
+:root  {
     --background: 260 50% 5%;
     --foreground: 260 5% 90%;
     --card: 260 50% 0%;

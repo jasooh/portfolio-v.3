@@ -1,11 +1,18 @@
+'use client'
+
 // Portfolio page
 
 // Icons
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { IoDocumentTextOutline } from 'react-icons/io5'
 
+// Motion
+import SlideTransition from '@/components/animate/SlideTransition'
+
 // TODO: Split up this entire thing into components
 // TODO: Remove borders
+// TODO: Shorten long class names with Tailwind utility components
+
 export default function Home() {
   return (
     <main className="w-full min-h-screen">
@@ -16,30 +23,29 @@ export default function Home() {
         <header className="flex flex-row min-h-screen border-red-500 border">
           {/* Name */}
           <section className="w-[60%] pl-28 flex flex-col justify-center min-h-screen border-green-400 border">
-            <section className="w-fit mb-2 border">
+            <SlideTransition className="w-fit mb-2 border">
               <p>Hey! I&#39;m</p>
               <h1 className="text-6xl">Justin Abuyuan.</h1>
-            </section>
+              {/* Current position */}
+              <section className="w-fit border">
+                <h2 className="text-xl">An engineering student at the University of Waterloo.</h2>
+              </section>
 
-            {/* Current position */}
-            <section className="w-fit border">
-              <h2 className="text-xl">An engineering student at the University of Waterloo.</h2>
-            </section>
+              {/* Lil blurb */}
+              <section className="w-fit mt-5 border">
+                {/* TODO: Implement changing typed text */}
+                I like to code stuff and build things for the internet.
+              </section>
 
-            {/* Lil blurb */}
-            <section className="w-fit mt-5 border">
-              {/* TODO: Implement changing typed text */}
-              I like to code stuff and build things for the internet.
-            </section>
-
-            {/* Social links */}
-            <section className="flex flex-row gap-3 w-fit mt-8 border">
-              {/* TODO: Turn these into buttons and add a cool parallax animation when moving mouse inside the container */}
-              {/* TODO: Find better icons */}
-              <FaLinkedin className="size-8" />
-              <FaGithub className="size-8" />
-              <IoDocumentTextOutline className="size-8" />
-            </section>
+              {/* Social links */}
+              <section className="flex flex-row gap-3 w-fit mt-8 border">
+                {/* TODO: Turn these into buttons and add a cool parallax animation when moving mouse inside the container */}
+                {/* TODO: Find better icons */}
+                <FaLinkedin className="size-8" />
+                <FaGithub className="size-8" />
+                <IoDocumentTextOutline className="size-8" />
+              </section>
+            </SlideTransition>
           </section>
 
           {/* Hero animation */}
