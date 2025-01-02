@@ -8,12 +8,16 @@ import { IoDocumentTextOutline } from 'react-icons/io5'
 
 // Motion
 import SlideTransition from '@/components/animate/SlideTransition'
+import { useScroll } from 'motion/react'
 
 // TODO: Split up this entire thing into components
 // TODO: Remove borders
 // TODO: Shorten long class names with Tailwind utility components
 
 export default function Home() {
+  // Scroll
+  const { scrollYProgress } = useScroll()
+
   return (
     <main className="w-full min-h-screen">
       {/* Grouped Header and Sections */}
