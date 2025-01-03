@@ -18,16 +18,20 @@ export default function Home() {
   const scrollRef = useRef(null)
 
   // Scroll
-  const { scrollYProgress } = useScroll()
+  const { scrollYProgress } = useScroll(
+    {
+      container: scrollRef,
+    },
+  )
   const width = useSpring(
-    useTransform(scrollYProgress, [0, 0.1], ['600%', '500%']),
-    { stiffness: 100, damping: 20 },
+    useTransform(scrollYProgress, [0, 0.5], ['700%', '500%']),
+    { stiffness: 100, damping: 15 },
   )
 
   return (
-    <main className="w-full">
+    <main className="w-full h-screen">
       {/* Grouped Header and Sections */}
-      <section aria-labelledby="main-content" className="flex flex-row border-red-500 border">
+      <section aria-labelledby="main-content" className="h-full flex flex-row border-red-500 border">
         {/* Hero Section */}
         {/* TODO: Add fade in transition for this section */}
         {/* Name */}
@@ -62,21 +66,21 @@ export default function Home() {
 
         {/* Portfolio content */}
         {/* TODO: use scroll area to make this show portfolio content */}
-        <div className="flex-grow flex flex-col border border-yellow-500">
+        <div ref={scrollRef} className="flex-grow flex flex-col border border-yellow-500 h-full overflow-scroll">
           {/* About Section */}
-          <section id="about" aria-labelledby="about-heading" className="w-full border h-[500px]">
+          <section id="about" aria-labelledby="about-heading" className="w-full border min-h-screen">
             <h2 id="about-heading">About Me</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </section>
 
           {/* Projects Section */}
-          <section id="projects" aria-labelledby="projects-heading" className="w-full border h-[500px]">
+          <section id="projects" aria-labelledby="projects-heading" className="w-full border min-h-[500px]">
             <h2 id="projects-heading">Projects</h2>
             <p>Nulla maximus semper sodales. Aliquam mauris velit, suscipit ac felis et, euismod accumsan magna.</p>
           </section>
 
           {/* Experience Section */}
-          <section id="experience" aria-labelledby="experience-heading" className="w-full border h-[500px]">
+          <section id="experience" aria-labelledby="experience-heading" className="w-full border min-h-[500px]">
             <h2 id="experience-heading">Experience</h2>
             <p>Ut vitae varius nisi. Quisque mollis pretium felis, et dictum augue maximus eu.</p>
           </section>
