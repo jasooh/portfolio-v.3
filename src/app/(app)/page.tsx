@@ -5,10 +5,14 @@ import { useRef } from 'react'
 
 // Icons
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { IoDocumentTextOutline } from 'react-icons/io5'
+import { IoDocumentAttach } from "react-icons/io5";
 
 // Motion
 import { motion, useScroll, useSpring, useTransform } from 'motion/react'
+
+// Typewrite
+import Typewriter from "typewriter-effect";
+import SlideTransition from '@/components/animate/SlideTransition'
 
 // TODO: Split up this entire thing into components
 // TODO: Remove borders
@@ -39,18 +43,24 @@ export default function Home() {
           className="flex flex-col items-center justify-center border-green-400 border whitespace-nowrap"
           style={{ width }}
         >
-          <header className="w-fit mb-2 border">
+          <SlideTransition className="w-fit mb-2 border">
             <p><span className="text-primary">Hey!</span> I&#39;m</p>
             <h1 className="text-6xl font-black">Justin Abuyuan.</h1>
             {/* Current position */}
             <section className="w-fit border">
-              <h2 className="text-xl">An <span className="text-primary">engineering student</span> at the University of Waterloo.</h2>
+              <h2 className="text-xl">An <span className="text-primary">engineering student</span> at the University of
+                Waterloo.</h2>
             </section>
 
             {/* Lil blurb */}
-            <section className="w-fit mt-5 border text-primary">
+            <section className="w-fit mt-5 border text-gray-400">
               {/* TODO: Implement changing typed text */}
-              I like to code stuff and build things for the internet.
+              <Typewriter options={{
+                strings: 'I like to code stuff and build things for the internet.',
+                autoStart: true,
+                delay: 10,
+              }} />
+
             </section>
 
             {/* Social links */}
@@ -59,9 +69,9 @@ export default function Home() {
               {/* TODO: Find better icons */}
               <FaLinkedin className="size-8" />
               <FaGithub className="size-8" />
-              <IoDocumentTextOutline className="size-8" />
+              <IoDocumentAttach className="size-8" />
             </section>
-          </header>
+          </SlideTransition>
         </motion.section>
 
         {/* Portfolio content */}
