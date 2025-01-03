@@ -24,7 +24,7 @@ export default function Home() {
     },
   )
   const width = useSpring(
-    useTransform(scrollYProgress, [0, 0.5], ['700%', '500%']),
+    useTransform(scrollYProgress, [0, 0.3], ['700%', '600%']),
     { stiffness: 100, damping: 15 },
   )
 
@@ -36,19 +36,19 @@ export default function Home() {
         {/* TODO: Add fade in transition for this section */}
         {/* Name */}
         <motion.section
-          className="flex flex-col items-center justify-center border-green-400 border"
+          className="flex flex-col items-center justify-center border-green-400 border whitespace-nowrap"
           style={{ width }}
         >
           <header className="w-fit mb-2 border">
-            <p>Hey! I&#39;m</p>
-            <h1 className="text-6xl">Justin Abuyuan.</h1>
+            <p><span className="text-primary">Hey!</span> I&#39;m</p>
+            <h1 className="text-6xl font-black">Justin Abuyuan.</h1>
             {/* Current position */}
             <section className="w-fit border">
-              <h2 className="text-xl">An engineering student at the University of Waterloo.</h2>
+              <h2 className="text-xl">An <span className="text-primary">engineering student</span> at the University of Waterloo.</h2>
             </section>
 
             {/* Lil blurb */}
-            <section className="w-fit mt-5 border">
+            <section className="w-fit mt-5 border text-primary">
               {/* TODO: Implement changing typed text */}
               I like to code stuff and build things for the internet.
             </section>
