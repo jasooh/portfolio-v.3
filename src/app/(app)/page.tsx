@@ -14,6 +14,10 @@ import { motion, useScroll, useSpring, useTransform } from 'motion/react'
 import Typewriter from 'typewriter-effect'
 import SlideTransition from '@/components/animate/SlideTransition'
 
+// Font
+import { Montserrat } from "next/font/google";
+const montserrat = Montserrat({ subsets: ["latin"] });
+
 // TODO: Split up this entire thing into components
 // TODO: Remove borders
 // TODO: Shorten long class names with Tailwind utility components
@@ -44,8 +48,10 @@ export default function Home() {
           style={{ width }}
         >
           <SlideTransition className="w-fit">
-            <p><span className="text-primary">Hey!</span> I&#39;m</p>
-            <h1 className="text-stroke text-5xl lg:text-7xl font-black italic text-background mt-1">
+            <p className="text-xl">
+              <span className="text-primary">Hey!</span> I&#39;m
+            </p>
+            <h1 className={`${montserrat.className} text-stroke text-5xl lg:text-7xl font-black italic text-background mt-1`}>
               JUSTIN <br /> ABUYUAN
             </h1>
             {/* Current position */}
@@ -56,7 +62,7 @@ export default function Home() {
             </section>
 
             {/* Lil blurb */}
-            <section className="w-fit mt-8 text-gray-400">
+            <section className="w-fit mt-4 text-gray-400">
               {/* TODO: Implement changing typed text */}
               <Typewriter options={{
                 strings: 'I like to code stuff and build things for the internet.',
