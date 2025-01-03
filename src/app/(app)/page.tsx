@@ -18,25 +18,21 @@ export default function Home() {
   const scrollRef = useRef(null)
 
   // Scroll
-  const { scrollYProgress } = useScroll(
-    // {
-    //   target: scrollRef,
-    // }
-  )
+  const { scrollYProgress } = useScroll()
   const width = useSpring(
-    useTransform(scrollYProgress, [0, 0.2], ['600%', '500%']),
+    useTransform(scrollYProgress, [0, 0.1], ['600%', '500%']),
     { stiffness: 100, damping: 20 },
   )
 
   return (
-    <main className="w-full min-h-screen">
+    <main className="w-full">
       {/* Grouped Header and Sections */}
-      <section aria-labelledby="main-content" className="flex flex-row min-h-screen border-red-500 border">
+      <section aria-labelledby="main-content" className="flex flex-row border-red-500 border">
         {/* Hero Section */}
         {/* TODO: Add fade in transition for this section */}
         {/* Name */}
         <motion.section
-          className="flex flex-col items-center justify-center min-h-screen border-green-400 border"
+          className="flex flex-col items-center justify-center border-green-400 border"
           style={{ width }}
         >
           <header className="w-fit mb-2 border">
@@ -64,40 +60,27 @@ export default function Home() {
           </header>
         </motion.section>
 
-        {/* Hero animation */}
-        {/* TODO: Node animation here */}
+        {/* Portfolio content */}
         {/* TODO: use scroll area to make this show portfolio content */}
-        <section ref={scrollRef} className="pl-20 flex-grow flex flex-col justify-center border border-yellow-500">
-          <section className="w-fit text-xl border uppercase">
-            <p>Projects</p>
-            <p>Experience</p>
-            <p>Contact</p>
+        <div className="flex-grow flex flex-col border border-yellow-500">
+          {/* About Section */}
+          <section id="about" aria-labelledby="about-heading" className="w-full border h-[500px]">
+            <h2 id="about-heading">About Me</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </section>
-        </section>
 
-        {/*  /!* About Section *!/*/}
-        {/*  <section id="about" aria-labelledby="about-heading">*/}
-        {/*    <h2 id="about-heading">About Me</h2>*/}
-        {/*    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>*/}
-        {/*  </section>*/}
+          {/* Projects Section */}
+          <section id="projects" aria-labelledby="projects-heading" className="w-full border h-[500px]">
+            <h2 id="projects-heading">Projects</h2>
+            <p>Nulla maximus semper sodales. Aliquam mauris velit, suscipit ac felis et, euismod accumsan magna.</p>
+          </section>
 
-        {/*  /!* Projects Section *!/*/}
-        {/*  <section id="projects" aria-labelledby="projects-heading">*/}
-        {/*    <h2 id="projects-heading">Projects</h2>*/}
-        {/*    <p>Nulla maximus semper sodales. Aliquam mauris velit, suscipit ac felis et, euismod accumsan magna.</p>*/}
-        {/*  </section>*/}
-
-        {/*  /!* Experience Section *!/*/}
-        {/*  <section id="experience" aria-labelledby="experience-heading">*/}
-        {/*    <h2 id="experience-heading">Experience</h2>*/}
-        {/*    <p>Ut vitae varius nisi. Quisque mollis pretium felis, et dictum augue maximus eu.</p>*/}
-        {/*  </section>*/}
-      </section>
-
-      {/* About Section */}
-      <section id="about" aria-labelledby="about-heading" className="h-[1000px]">
-        <h2 id="about-heading">About Me</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          {/* Experience Section */}
+          <section id="experience" aria-labelledby="experience-heading" className="w-full border h-[500px]">
+            <h2 id="experience-heading">Experience</h2>
+            <p>Ut vitae varius nisi. Quisque mollis pretium felis, et dictum augue maximus eu.</p>
+          </section>
+        </div>
       </section>
 
       {/* TODO: When portfolio is at the bottom, transition to a footer with no hero */}
