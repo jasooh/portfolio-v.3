@@ -5,13 +5,13 @@ import { useRef } from 'react'
 
 // Icons
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { IoDocumentAttach } from "react-icons/io5";
+import { IoDocumentAttach } from 'react-icons/io5'
 
 // Motion
 import { motion, useScroll, useSpring, useTransform } from 'motion/react'
 
 // Typewrite
-import Typewriter from "typewriter-effect";
+import Typewriter from 'typewriter-effect'
 import SlideTransition from '@/components/animate/SlideTransition'
 
 // TODO: Split up this entire thing into components
@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <main className="w-full h-screen">
       {/* Grouped Header and Sections */}
-      <section aria-labelledby="main-content" className="h-full flex flex-row border-red-500 border">
+      <section aria-labelledby="main-content" className="h-full flex flex-row border-red-500">
         {/* Hero Section */}
         {/* TODO: Add fade in transition for this section */}
         {/* Name */}
@@ -43,17 +43,20 @@ export default function Home() {
           className="flex flex-col items-center justify-center border-green-400 border whitespace-nowrap"
           style={{ width }}
         >
-          <SlideTransition className="w-fit mb-2 border">
+          <SlideTransition className="w-fit">
             <p><span className="text-primary">Hey!</span> I&#39;m</p>
-            <h1 className="text-6xl font-black">Justin Abuyuan.</h1>
+            <h1 className="text-stroke text-5xl lg:text-7xl font-black italic text-background mt-1">
+              JUSTIN <br /> ABUYUAN
+            </h1>
             {/* Current position */}
-            <section className="w-fit border">
-              <h2 className="text-xl">An <span className="text-primary">engineering student</span> at the University of
-                Waterloo.</h2>
+            <section className="w-fit mt-2">
+              <h2 className="text-xl">
+                An <span className="text-primary">engineering student</span> at the University of Waterloo.
+              </h2>
             </section>
 
             {/* Lil blurb */}
-            <section className="w-fit mt-5 border text-gray-400">
+            <section className="w-fit mt-8 text-gray-400">
               {/* TODO: Implement changing typed text */}
               <Typewriter options={{
                 strings: 'I like to code stuff and build things for the internet.',
@@ -64,7 +67,7 @@ export default function Home() {
             </section>
 
             {/* Social links */}
-            <section className="flex flex-row gap-3 w-fit mt-8 border">
+            <section className="flex flex-row gap-3 w-fit mt-8">
               {/* TODO: Turn these into buttons and add a cool parallax animation when moving mouse inside the container */}
               {/* TODO: Find better icons */}
               <FaLinkedin className="size-8" />

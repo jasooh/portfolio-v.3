@@ -50,6 +50,7 @@
     --input: 260 30% 18%;
     --ring: 260 81% 78%;
     --radius: 0.5rem;
+    --stroke: 0, 0%, 100%;
 }
 
 /* Components */
@@ -61,4 +62,14 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@layer components {
+    /* Text effects */
+    .text-stroke {
+        text-shadow: hsl(var(--stroke)) 0.05rem 0.05rem 0px,
+        hsl(var(--stroke)) -0.05rem 0.05rem 0px,
+        hsl(var(--stroke)) 0.05rem -0.05rem 0px,
+        hsl(var(--stroke)) -0.05rem -0.05rem 0px;
+    }
 }
