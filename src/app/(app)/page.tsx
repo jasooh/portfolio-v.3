@@ -33,8 +33,13 @@ export default function Home() {
     },
   )
 
+  // Calculate the viewport width
   const viewportWidth: number = useMemo(() => {
-    return window.innerWidth
+    if (typeof window !== 'undefined') {
+      return window.innerWidth
+    } else {
+      return 0
+    }
   }, [])
 
   // Widths of the hero and the content section
