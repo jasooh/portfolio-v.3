@@ -1,7 +1,7 @@
 'use client'
 
 // Portfolio page
-import { useRef } from 'react'
+import { useMemo, useRef } from 'react'
 
 // Icons
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
@@ -15,8 +15,9 @@ import Typewriter from 'typewriter-effect'
 import SlideTransition from '@/components/animate/SlideTransition'
 
 // Font
-import { Montserrat } from "next/font/google";
-const montserrat = Montserrat({ subsets: ["latin"] });
+import { Montserrat } from 'next/font/google'
+
+const montserrat = Montserrat({ subsets: ['latin'] })
 
 // TODO: Split up this entire thing into components
 // TODO: Remove borders
@@ -31,27 +32,34 @@ export default function Home() {
       container: scrollRef,
     },
   )
-  const width = useSpring(
-    useTransform(scrollYProgress, [0, 0.3], ['700%', '600%']),
-    { stiffness: 100, damping: 15 },
-  )
+
+  const viewportWidth: number = useMemo(() => {
+    return window.innerWidth
+  }, [])
+
+  const width_hero = useTransform(scrollYProgress, [0, 0.3], [viewportWidth * 0.5, viewportWidth * 0.4])
+  const width_content = useTransform(scrollYProgress, [0, 0.3], [viewportWidth * 0.5, viewportWidth * 0.6])
+
+  const spring_hero = useSpring(width_hero, { stiffness: 100, damping: 15 })
+  const spring_content = useSpring(width_content, { stiffness: 100, damping: 15 })
 
   return (
     <main className="w-full h-screen">
       {/* Grouped Header and Sections */}
-      <section aria-labelledby="main-content" className="h-full flex flex-row border-red-500">
+      <section aria-labelledby="main-content" className="h-full border border-red-500">
         {/* Hero Section */}
         {/* TODO: Add fade in transition for this section */}
         {/* Name */}
         <motion.section
-          className="flex flex-col items-center justify-center border-green-400 border whitespace-nowrap"
-          style={{ width }}
+          className="h-screen fixed flex flex-col items-center justify-center border-green-400 border whitespace-nowrap z-[-1]"
+          style={{ width: spring_hero }}
         >
           <SlideTransition className="w-fit">
             <p className="text-xl">
               <span className="text-primary">Hey!</span> I&#39;m
             </p>
-            <h1 className={`${montserrat.className} text-stroke text-5xl lg:text-7xl font-black italic text-background mt-1`}>
+            <h1
+              className={`${montserrat.className} text-stroke text-5xl lg:text-7xl font-black italic text-background mt-1`}>
               JUSTIN <br /> ABUYUAN
             </h1>
             {/* Current position */}
@@ -69,7 +77,6 @@ export default function Home() {
                 autoStart: true,
                 delay: 10,
               }} />
-
             </section>
 
             {/* Social links */}
@@ -85,24 +92,29 @@ export default function Home() {
 
         {/* Portfolio content */}
         {/* TODO: use scroll area to make this show portfolio content */}
-        <div ref={scrollRef} className="flex-grow flex flex-col border border-yellow-500 h-full overflow-scroll">
-          {/* About Section */}
-          <section id="about" aria-labelledby="about-heading" className="w-full border min-h-screen">
-            <h2 id="about-heading">About Me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </section>
+        <div ref={scrollRef} className="w-full h-screen flex flex-row justify-end overflow-scroll">
+          <motion.section
+            className="flex flex-col border-2 border-yellow-500 h-full"
+            style={{ width: spring_content }}
+          >
+            {/* About Section */}
+            <section id="about" aria-labelledby="about-heading" className="w-full border min-h-screen">
+              <h2 id="about-heading">About Me</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </section>
 
-          {/* Projects Section */}
-          <section id="projects" aria-labelledby="projects-heading" className="w-full border min-h-[500px]">
-            <h2 id="projects-heading">Projects</h2>
-            <p>Nulla maximus semper sodales. Aliquam mauris velit, suscipit ac felis et, euismod accumsan magna.</p>
-          </section>
+            {/* Projects Section */}
+            <section id="projects" aria-labelledby="projects-heading" className="w-full border min-h-[500px]">
+              <h2 id="projects-heading">Projects</h2>
+              <p>Nulla maximus semper sodales. Aliquam mauris velit, suscipit ac felis et, euismod accumsan magna.</p>
+            </section>
 
-          {/* Experience Section */}
-          <section id="experience" aria-labelledby="experience-heading" className="w-full border min-h-[500px]">
-            <h2 id="experience-heading">Experience</h2>
-            <p>Ut vitae varius nisi. Quisque mollis pretium felis, et dictum augue maximus eu.</p>
-          </section>
+            {/* Experience Section */}
+            <section id="experience" aria-labelledby="experience-heading" className="w-full border min-h-[500px]">
+              <h2 id="experience-heading">Experience</h2>
+              <p>Ut vitae varius nisi. Quisque mollis pretium felis, et dictum augue maximus eu.</p>
+            </section>
+          </motion.section>
         </div>
       </section>
 
