@@ -35,11 +35,7 @@ export default function Home() {
 
   // Calculate the viewport width
   const viewportWidth: number = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth
-    } else {
-      return 0
-    }
+    return window.innerWidth
   }, [])
 
   // Widths of the hero and the content section
