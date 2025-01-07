@@ -37,11 +37,18 @@ export default function Home() {
     return window.innerWidth
   }, [])
 
-  const width_hero = useTransform(scrollYProgress, [0, 0.3], [viewportWidth * 0.5, viewportWidth * 0.4])
-  const width_content = useTransform(scrollYProgress, [0, 0.3], [viewportWidth * 0.5, viewportWidth * 0.6])
+  // Widths of the hero and the content section
+  const initial = 0.55
+  const width_hero = useTransform(scrollYProgress, [0, 0.3], [viewportWidth * initial, viewportWidth * (1 - initial)])
+  const width_content = useTransform(scrollYProgress, [0, 0.3], [viewportWidth * (1 - initial), viewportWidth * initial])
 
-  const spring_hero = useSpring(width_hero, { stiffness: 100, damping: 15 })
-  const spring_content = useSpring(width_content, { stiffness: 100, damping: 15 })
+  // Hero scale
+  const scale_hero = useTransform(scrollYProgress, [0, 0.3], [1, 0.95])
+
+  // Spring effect
+  const [stiffness, damping] = [100, 20]
+  const spring_hero = useSpring(width_hero, { stiffness: stiffness, damping: damping })
+  const spring_content = useSpring(width_content, { stiffness: stiffness, damping: damping })
 
   return (
     <main className="w-full h-screen">
@@ -52,7 +59,7 @@ export default function Home() {
         {/* Name */}
         <motion.section
           className="h-screen fixed flex flex-col items-center justify-center border-green-400 border whitespace-nowrap z-[-1]"
-          style={{ width: spring_hero }}
+          style={{ width: spring_hero, scale: scale_hero }}
         >
           <SlideTransition className="w-fit">
             <p className="text-xl">
