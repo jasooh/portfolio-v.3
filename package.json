@@ -19,6 +19,8 @@
     "@payloadcms/next": "latest",
     "@payloadcms/payload-cloud": "latest",
     "@payloadcms/richtext-lexical": "latest",
+    "@splinetool/react-spline": "^4.0.0",
+    "@splinetool/runtime": "^1.9.57",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
