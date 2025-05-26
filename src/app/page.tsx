@@ -2,7 +2,7 @@
 
 export default function Home() {
     return (
-        <div className="flex items-center justify-center h-screen px-64 py-40">
+        <div className="flex items-center justify-center h-screen px-30 py-20">
             <main className="h-full w-full">
                 <header>
                     <div>
